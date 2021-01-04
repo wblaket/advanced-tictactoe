@@ -1,0 +1,116 @@
+<!-- Blake Tharp Last Updated 1-1-2021  -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title> Tic Tac Toe! </title>
+    <link rel="stylesheet" href="tictactoe.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        //Set default hidden values on page load:
+        $("table").hide();
+        $("#4inARow").hide();
+        $("#5inARow").hide();
+        $("#6inARow").hide();
+        $('#score').hide();
+        // Execute player move function on clicking a space:
+        $(document).on("click", "td", function() { playerMove(this); });
+        // Execute restart game function on clicking button:
+        $(document).on("click", "#restartGame", function() {
+          restartGame();
+          setBoardTheme($("#selectTheme").val());
+          if ($("input[name='firstTurn']:checked").val() == "computer") {
+            computerMove();
+          }
+        });
+        // Change the theme to selected theme:
+        $("#selectTheme").change(function() { selectTheme(this.value); });
+        // Change the available options for win condition based off the size of the board:
+        $("#boardSize").change(function() {
+          if ($("#boardSize").val() == "3x3") {
+            $("#4inARow").hide();
+            $("#5inARow").hide();
+            $("#6inARow").hide();
+          } else if ($("#boardSize").val() == "4x4") {
+            $("#4inARow").show();
+          } else if ($("#boardSize").val() == "5x5") {
+            $("#4inARow").show();
+            $("#5inARow").show();
+          } else {
+            $("#4inARow").show();
+            $("#5inARow").show();
+            $("#6inARow").show();
+          }
+        });
+        // Upon starting the game hide the options and display the table and stats:
+
+        $("#startGame").click(function(){
+          setBoard($("#boardSize").val()); // Set the board size.
+          setBoardTheme($("#selectTheme").val()); // Set the color of the board.
+          $("#settings").hide(); // Hide the settings.
+          $("table").show(); // Display the table.
+          $('#score').show(); // Display the stats.
+          setPlayer($("input[name='playerSelect']:checked").val()); // Set the player's mark.
+          setWinCondition($("#winCondition").val()); // Set the win condition for the game.
+          // If the computer is selected to go first, execute the computer move function:
+          if ($("input[name='firstTurn']:checked").val() == "computer") {
+            computerMove();
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1 id="title">Advanced Tic Tac Toe</h1>
+    <div id="settings">
+      <h3>Who goes first?</h3>
+      <input type="radio" name="firstTurn" value="player" checked="checked">Player<br/>
+      <input type="radio" name="firstTurn" value="computer">Computer<br/>
+
+      <h3>Are you X's or O's?</h3>
+      <input type="radio" name="playerSelect" value="O" checked="checked" >O<br>
+      <input type="radio" name="playerSelect" value="X">X<br>
+
+      <h3>Select board size:</h3>
+      <select name="boardSize" id="boardSize" autocomplete="off">
+        <option value="3x3" selected="selected">3x3</option>
+        <option value="4x4">4x4</option>
+        <option value="5x5">5x5</option>
+        <option value="6x6">6x6</option>
+      </select>
+
+      <h3>Select Win Conditions:</h3>
+      <select name="winCondition" id="winCondition" autocomplete="off">
+        <option value="3inARow" id="3inARow">3 in a Row</option>
+        <option value="4inARow" id="4inARow">4 in a Row</option>
+        <option value="5inARow" id="5inARow">5 in a Row</option>
+        <option value="6inARow" id="6inARow">6 in a Row</option>
+      </select>
+
+      <h3>Select Theme:</h3>
+      <select name="selectTheme" id="selectTheme" autocomplete="off">
+        <option value="ice" id="ice" selected="selected">Ice</option>
+        <option value="mint" id="mint">Mint</option>
+        <option value="fire" id="fire">Fire</option>
+        <option value="dark" id="dark">Dark</option>
+      </select>
+      <button id="startGame">Start Game!</button>
+    </div>
+
+    <table id="board"></table>
+
+    <div id="score">
+      <button id="restartGame">Restart game!</button>
+        <p>Player: <span id="numPlayerWins"></span></p>
+        <p>Computer: <span id="numCompWins"></span></p>
+        <p>Ties: <span id="numTies"></span></p>
+      <p id="result"></p>
+    </div>
+
+    <script src="tictactoe.inc.js"></script>
+</body>
+</html>

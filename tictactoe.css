@@ -1,0 +1,91 @@
+/* Color pallet
+
+Ice Theme:
+#6bdbdd - Aquamarine - light blue
+#0338b9  - dark blue
+
+Mint Theme:
+Midnight Blue: #19608d
+Shamrock: #75f6c8
+
+Dark Theme:
+Purple Mountains’ Majesty - #727fb6
+Black - #130414
+
+Fire Theme:
+Scarlet - #e52633
+Black- #030304
+
+*/
+
+body {
+  background:#0338b9;  /*- dark blue  */
+  color:#6bdbdd;  /* Aquamarine */
+}
+h1 {
+  color:#6bdbdd;
+  text-align:center;
+  font-size:50px;
+}
+h3 {
+  font-size:25px;
+}
+
+#settings {
+
+  background:#6bdbdd;  /*- dark blue  */
+  color:#0338b9;
+  padding-top:25px;
+  padding-bottom: 50px;
+
+  margin-left:300px;
+  margin-right:300px;
+  text-align: center;
+}
+
+#score {
+
+  padding-top:30px;
+  padding-bottom:20px;
+  margin-top:50px;
+  margin-left:500px;
+  margin-right:500px;
+  text-align: center;
+  background:#6bdbdd;
+  color:#0338b9;
+}
+
+
+table, td {
+  border: 5px solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  font-size: 50px;
+  width:50px;
+  height:50px;
+  background-color: #6bdbdd;  /* Aquamarine */
+  color:#0338b9;
+
+}
+input[type=text] {
+  height:50px;
+  width:50px;
+  font-size: 25px;
+
+}
+
+#board td {
+  width:150px;
+  height:150px;
+  font-size: 100px;
+  text-align: center;
+}
+#settings p {
+  font-size:20px;
+}
+input[type=radio] {
+  font-size:30px;
+}
