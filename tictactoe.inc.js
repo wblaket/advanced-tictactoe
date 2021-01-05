@@ -276,6 +276,7 @@ function diagCheck() {
       computerCount = 0;
       for (var x = 0; x < winCondition; x++) {
         // check for player match
+        if (board.rows[row + x].cells[col + x].innerHTML == playerMark) {
           playerCount++; // Increase the number of matching player marks
           playerCells.push([row + x, col + x]); // Add the cell to an array of matching cells
         } else {
